@@ -15,6 +15,13 @@ var connection = mysql.createConnection({
 });
 
 var app = express();
+
+//志威的
+/*
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`<!DOCTYPE html>`);
+*/
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -60,13 +67,14 @@ app.post('/auth', function(request, response) {
 
 });
 
+
+
+app.listen(3001,function () {
+	console.log("已啟動在http://localhost:3001/")//暫時改
+})
+
 app.get(/(.*)\.(jpg|gif|png|ico|css|js|txt)/i, function(req, res) {
 	res.sendfile(__dirname + "/" + req.params[0] + "." + req.params[1], function(err) {
 		if (err) res.send(404);
 	});
   });
-
-app.listen(3001,function () {
-	console.log("已啟動在http://localhost:3001/")
-})
-
