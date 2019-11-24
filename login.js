@@ -23,10 +23,10 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.get('/home', function(request, response) {
-	response.sendFile(path.join(__dirname + '/homepage.html'));
+	response.sendFile(path.join(__dirname + '/views/homepage.html'));
 });
 app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/login.html'));
+	response.sendFile(path.join(__dirname + '/views/login.html'));
 });
 
 
@@ -45,6 +45,7 @@ app.post('/auth', function(request, response) {
 			response.end();
 		});
 	} */
+
 	if(username==username_test&&password==password_test){
 		request.session.loggedin = true;
 		request.session.username = username;
