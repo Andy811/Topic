@@ -1,3 +1,4 @@
+
 var mysql = require('mysql');
 var express = require('express');
 var session = require('express-session');
@@ -23,11 +24,22 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.get('/home', function(request, response) {
-	response.sendFile(path.join(__dirname + '/views/homepage.html'));
+	response.sendFile(path.join(__dirname + '/views' , 'homepage.html'));
 });
+app.get('/checkin', function(request, response) {
+	response.sendFile(path.join(__dirname+'/views', 'checkin.html'));
+});
+app.get('/record', function(request, response) {
+	response.sendFile(path.join(__dirname+ '/views' , 'record.html'));
+});
+app.get("/reservation", function(req, res) {
+	response.sendFile(path.join(__dirname+ '/views' , 'reservation'));
+});
+
 app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/views/login.html'));
 });
+
 
 
 app.post('/auth', function(request, response) {
